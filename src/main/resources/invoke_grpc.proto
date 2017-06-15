@@ -1,0 +1,46 @@
+// NOTE: you may need to add the sources generated when running `maven clean compile` to your IDE
+// configured source directories. Otherwise, the classes generated when the proto is compiled won't
+// be accessible. For IntelliJ, open this module's settings and mark the following as source directories:
+//
+// * target/generated-sources/protobuf/grpc-java
+// * target/generated-sources/protobuf/java
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "org.apache.nifi.processors.standard";
+option java_outer_classname = "InvokeGRPCProto";
+option objc_class_prefix = "igrpc";
+
+package org.apache.nifi.processors.standard;
+
+// The FlowFile service definition.
+service FlowFileService {
+    // Sends a FlowFile (blocking rpc)
+    rpc Send (FlowFileRequest) returns (FlowFileReply) {}
+}
+
+// The request message
+message FlowFileRequest {
+    int64 id = 1;
+    int64 entryDate = 2;
+    int64 lineageStartDate = 3;
+    int64 lineageStartIndex = 4;
+    int64 lastQueueDate = 5;
+    int64 queueDateIndex = 6;
+    int64 size = 7;
+    map<string, string> attributes = 8;
+    bytes content = 9;
+}
+
+// the reply message
+message FlowFileReply {
+    enum ResponseCode {
+        ERROR = 0;
+        SUCCESS = 1;
+        RETRY = 2;
+    }
+
+    ResponseCode responseCode = 1;
+    string body = 2;
+}
