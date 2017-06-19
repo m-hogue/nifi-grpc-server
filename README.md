@@ -1,10 +1,10 @@
-### NiFi FlowFile gRPC Server
+## NiFi FlowFile gRPC Server
 Simple server to receive FlowFiles sent from a NiFi processor
 
 Reference: https://issues.apache.org/jira/browse/NIFI-4037
 
 
-##  Instructions
+###  Instructions
 
 1. Clone this repo.
 2. Build a NiFi flow of `GenerateFlowFile` and `InvokeGRPC` as described in the ticket above, but wait to enable the flow.
