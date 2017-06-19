@@ -1,8 +1,8 @@
 package org.mikeyo;
 
-import org.apache.nifi.processors.standard.FlowFileReply;
-import org.apache.nifi.processors.standard.FlowFileRequest;
-import org.apache.nifi.processors.standard.FlowFileServiceGrpc;
+import org.apache.nifi.processors.grpc.FlowFileReply;
+import org.apache.nifi.processors.grpc.FlowFileRequest;
+import org.apache.nifi.processors.grpc.FlowFileServiceGrpc;
 
 import java.util.logging.Logger;
 

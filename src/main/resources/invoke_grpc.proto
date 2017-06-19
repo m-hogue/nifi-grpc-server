@@ -8,11 +8,11 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-option java_package = "org.apache.nifi.processors.standard";
+option java_package = "org.apache.nifi.processors.grpc";
 option java_outer_classname = "InvokeGRPCProto";
 option objc_class_prefix = "igrpc";
 
-package org.apache.nifi.processors.standard;
+package org.apache.nifi.processors.grpc;
 
 // The FlowFile service definition.
 service FlowFileService {
