@@ -7,6 +7,7 @@ import io.grpc.CompressorRegistry;
 import io.grpc.DecompressorRegistry;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.ServerInterceptors;
 
 public class NifiFlowFileServer {
     private static final Logger LOG = Logger.getLogger(NifiFlowFileServer.class.getName());
@@ -17,7 +18,7 @@ public class NifiFlowFileServer {
     /* The port on which the server should run */
         int port = 50051;
         server = ServerBuilder.forPort(port)
-                .addService(new FlowFileService())
+                .addService(ServerInterceptors.intercept(new FlowFileService(), new NifiFlowFileServerInterceptor()))
                 // supports both gzip and plaintext
                 .compressorRegistry(CompressorRegistry.getDefaultInstance())
                 .decompressorRegistry(DecompressorRegistry.getDefaultInstance())
